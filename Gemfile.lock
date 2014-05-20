@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    twilio_conference (0.1.0)
+    twilio_conference (0.1.1)
       rails
       twilio-ruby
 
