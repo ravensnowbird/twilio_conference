@@ -14,9 +14,10 @@ module TwilioConference
 
     def create_conference(options = {})
       options[:recipients].each do |recipient|
-	@client.account.calls.create(to: recipient[:to], 
-				    from: recipient[:from] || options[:from], 
-				    url: @url)
+	options.keys.each do |key|
+	  recipient[key] = options[key] if recipient[key].blank? && key != :recipients
+	end
+	@client.account.calls.create(recipient)
       end
     end
   end
