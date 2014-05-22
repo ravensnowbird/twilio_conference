@@ -17,7 +17,7 @@ module TwilioConference
 	options.keys.each do |key|
 	  recipient[key] = options[key] if recipient[key].blank? && key != :recipients
 	end
-	@client.account.calls.create(recipient)
+	@client.account.calls.create(recipient.merge!(:url => @url))
       end
     end
   end
